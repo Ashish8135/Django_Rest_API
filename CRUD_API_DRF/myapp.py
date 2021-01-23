@@ -64,9 +64,24 @@ def update_data():
     print(data)
 
 
+
+# delete data from database.
+def delete_data():
+    data={
+     'id': 25
+    } 
+# convert python data into json
+    json_data=json.dumps(data)
+    # send put request to the server(put means update)
+    r=requests.delete(url=URL , data=json_data)  #Get data from database by converting complex into python and thenafter json
+    data=r.json()
+    print(data)
+
+
 # get_data(2)
 # post_data()
-update_data()
+# update_data()
+delete_data()
 
 
 

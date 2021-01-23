@@ -76,7 +76,22 @@ def student_api(request):
         
     
 
-    
+        # delete data from database
+
+    if request.method=="DELETE":
+        json_data=request.body
+        stream=io.BytesIO(json_data)
+        python_data=JSONParser().parse(stream)
+        id=python_data.get('id')
+        stu=Student.objects.get(id=id)
+        stu.delete()
+        res={'msg':'data deleted successfully'}
+        # converted python data into json 
+        json_data=JSONRenderer().render(res)
+        return HttpResponse(json_data,content_type='application/json') 
+    json_data=JSONRenderer().render(serializer.errors)
+    return HttpResponse(json_data,content_type='application/json')
+
 
 
 
