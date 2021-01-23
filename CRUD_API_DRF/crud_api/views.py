@@ -36,7 +36,7 @@ def student_api(request):
 
 
 
-# Insert/Creat data into database
+# Insert/Create data into database
 
     if request.method=="POST":   # post request send to the server
         json_data=request.body     
@@ -52,6 +52,29 @@ def student_api(request):
             return HttpResponse(json_data,content_type='application/json') 
         json_data=JSONRenderer().render(serializer.errors)
         return HttpResponse(json_data,content_type='application/json') 
+
+
+
+# update data into database(put means update)
+    if request.method=="PUT":
+        json_data=request.body     
+        stream = io.BytesIO(json_data)   # get json data 
+        # parse json data to python native data type
+        python_data =JSONParser().parse(stream)   #converted json data to python native data type(dictionary)
+        id= python_data.get('id')
+        stu=Student.objects.get(id=id)
+        serializer=StudentSerializer(stu,data=python_data,partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            res={'msg':'data updated successfully'}
+            # converted python data into json 
+            json_data=JSONRenderer().render(res)
+            return HttpResponse(json_data,content_type='application/json') 
+        json_data=JSONRenderer().render(serializer.errors)
+        return HttpResponse(json_data,content_type='application/json') 
+
+        
+    
 
     
 
