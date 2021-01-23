@@ -11,7 +11,9 @@ class StudentSerializer(serializers.Serializer):
     branch=serializers.CharField(max_length=100)
     college=serializers.CharField(max_length=100)
 
-    # def create(self,validate_data):
-    #     return 
+
+    # Data create or insert into database or table by using create method
+    def create(self,validate_data):
+        return Student.objects.create(**validate_data)
     
     
