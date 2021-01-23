@@ -1,4 +1,4 @@
-
+  
 
 from .models import Student
 from rest_framework import serializers
@@ -11,7 +11,7 @@ class StudentSerializer(serializers.Serializer):
     branch=serializers.CharField(max_length=100)
     college=serializers.CharField(max_length=100)
 
-    def create(self,validate_data):
-        return 
+    # def create(self,validate_data):
+    #     return 
     
     
