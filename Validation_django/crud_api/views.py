@@ -6,11 +6,14 @@ from .serializer import StudentSerializer
 from rest_framework.renderers import JSONRenderer
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+from django.views import View
 
 # Create your views here.
-@csrf_exempt  
-def student_api(request):
-    if request.method=="GET":   # get/fetch data from database.
+
+@method_decorator(csrf_exempt,name='dispatch')
+class StudentAPI(View):
+    def get(self,request,*args,**kwargs):
         json_data=request.body     # 
         stream = io.BytesIO(json_data)    
         # parse json data to python native data type
@@ -30,15 +33,10 @@ def student_api(request):
         serializer=StudentSerializer(stu,many=True)  # complex to python data type
         json_data=JSONRenderer().render(serializer.data) # python data type to json
         return HttpResponse(json_data,content_type='application/json')
-    
-
-
-
 
 
 # Insert/Create data into database
-
-    if request.method=="POST":   # post request send to the server
+    def post(self,request,*args,**kwargs):
         json_data=request.body     
         stream = io.BytesIO(json_data)   # get json data 
         # parse json data to python native data type
@@ -53,10 +51,8 @@ def student_api(request):
         json_data=JSONRenderer().render(serializer.errors)
         return HttpResponse(json_data,content_type='application/json') 
 
-
-
 # update data into database(put means update)
-    if request.method=="PUT":
+    def put(self,request,*args,**kwargs):
         json_data=request.body     
         stream = io.BytesIO(json_data)   # get json data 
         # parse json data to python native data type
@@ -74,11 +70,8 @@ def student_api(request):
         return HttpResponse(json_data,content_type='application/json') 
 
         
-    
-
     # delete data from database
-
-    if request.method=="DELETE":
+    def delete(self,request,*args,**kwargs):
         json_data=request.body
         stream=io.BytesIO(json_data)
         python_data=JSONParser().parse(stream)
@@ -89,8 +82,7 @@ def student_api(request):
         # converted python data into json 
         json_data=JSONRenderer().render(res)
         return HttpResponse(json_data,content_type='application/json') 
-    json_data=JSONRenderer().render(serializer.errors)
-    return HttpResponse(json_data,content_type='application/json')
+    
 
 
 
