@@ -23,8 +23,14 @@ class StudentSerializer(serializers.ModelSerializer):
         # for multiple fields we use jusk like that we do by three ways
         # 2.Way :: read_only_fields= ['name','roll']
         # 3.Way ::Given below
-        extre_kwargs={'name':{'read_only':True},
-                       'roll':{'read_only':True}}
+        # extre_kwargs={'name':{'read_only':True},
+        #                'roll':{'read_only':True}}
+
+    #field level validation 
+    def validation_roll(self,value):
+        if value >= 200:
+            raise serializers.ValidationError("Sorry! Seat is already Full ")
+        return value
 
 
 

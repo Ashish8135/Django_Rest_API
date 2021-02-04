@@ -30,7 +30,7 @@ def get_data(id=None):
 def post_data():
     data={
      'name':'Piyush',
-     'roll':120,
+     'roll':310,
      'course':'B.Tech',
      'branch':'Civil',
      'city':'Fatuha',
@@ -75,6 +75,6 @@ def delete_data():
 
 
 # get_data()
-# post_data()
-update_data()
+post_data()
+# update_data()
 # delete_data()
