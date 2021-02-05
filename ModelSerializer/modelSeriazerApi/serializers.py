@@ -33,6 +33,16 @@ class StudentSerializer(serializers.ModelSerializer):
         return value
 
 
+    # object Level Validation
+    def validate(self,data):
+        nm=data.get('name')
+        ct=data.get('city')
+        if nm.lower()=='shubham' and ct.lower()=='gaya':
+            raise serializers.ValidationError("City must be Gaya")
+        return data
+
+
+
 
 
 #Validation in ModelSerializer
