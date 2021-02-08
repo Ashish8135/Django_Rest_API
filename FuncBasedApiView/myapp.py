@@ -1,7 +1,7 @@
 import requests
 import json
 
-URL="http://127.0.0.1:8000/stuapi/"
+URL="http://127.0.0.1:8000/hello/"
 
 # dump_data=json.dumps(data)
 # post_data=requests.post(url=URL ,data=dump_data)
@@ -19,8 +19,9 @@ def get_data(id=None):
     data={}
     if id is not None:   #if data is present then fetch in dictionary
         data={'id':id}
-    json_data=json.dumps(data)  # convert python into json data 
-    r=requests.get(url=URL , data=json_data)  #Get data from database by converting complex into python and thenafter json
+    json_data=json.dumps(data)  
+    headers={'content-Type':'application/json'} # convert python into json data 
+    r=requests.get(url=URL ,headers=headers, data=json_data)  #Get data from database by converting complex into python and thenafter json
     data=r.json()
     print(data)
 
@@ -36,10 +37,12 @@ def post_data():
      'branch':'Civil',
      'college':'IIT Kanpur'
     } 
+    headers={'content-Type':'application/json'}
+
 # convert python data into json
     json_data=json.dumps(data)
     # send post request to the server
-    r=requests.post(url=URL , data=json_data)  #Get data from database by converting complex into python and thenafter json
+    r=requests.post(url=URL,headers=headers, data=json_data)  #Get data from database by converting complex into python and thenafter json
     data=r.json()
     print(data)
 
@@ -55,11 +58,12 @@ def update_data():
      'roll':29,
      'city':'lucknow',
      'college':'IIT Roorkee'
-    } 
+    }
+    headers={'content-Type':'application/json'} 
 # convert python data into json
     json_data=json.dumps(data)
     # send put request to the server(put means update)
-    r=requests.put(url=URL , data=json_data)  #Get data from database by converting complex into python and thenafter json
+    r=requests.put(url=URL ,headers=headers, data=json_data)  #Get data from database by converting complex into python and thenafter json
     data=r.json()
     print(data)
 
@@ -69,16 +73,17 @@ def update_data():
 def delete_data():
     data={
      'id': 1
-    } 
+    }
+    headers={'content-Type':'application/json'}
 # convert python data into json
     json_data=json.dumps(data)
     # send put request to the server(put means update)
-    r=requests.delete(url=URL , data=json_data)  #Get data from database by converting complex into python and thenafter json
+    r=requests.delete(url=URL,headers=headers, data=json_data)  #Get data from database by converting complex into python and thenafter json
     data=r.json()
     print(data)
 
 
-# get_data(2)
-# post_data()
+get_data()
+post_data()
 # update_data()
-delete_data()
+# delete_data()
