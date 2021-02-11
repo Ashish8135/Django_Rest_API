@@ -51,11 +51,10 @@ def post_data():
 # update data inot database
 def update_data():
     data={
-     'id': 3,
+     'id': 4,
      'name':'Amit',
      'roll':29,
      'city':'lucknow',
-     'college':'IIT Roorkee'
     }
     headers={'content-Type':'application/json'} 
 # convert python data into json
@@ -82,6 +81,6 @@ def delete_data():
 
 
 # get_data(2)
-post_data()
-# update_data()
+# post_data()
+update_data()
 # delete_data()

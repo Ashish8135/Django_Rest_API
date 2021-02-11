@@ -25,4 +25,15 @@ def studentapi(request):
             return Response({'msg':"Data Inserted Successfully"})
         return Response(serialzer.errors)
 
+    if request.method=="PUT":
+        id=request.data.get('id')
+        stu=Student.objects.get(pk=id)
+        serialzer=StudentSerializer(stu,data=request.data,partial=True)
+        if serialzer.is_valid():
+            serialzer.save()
+            return Response({'msg':"Data updated successfully"})
+        return Response(serialzer.errors)
+
+
+
 
