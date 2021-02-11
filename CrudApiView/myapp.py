@@ -69,7 +69,7 @@ def update_data():
 # delete data from database.
 def delete_data():
     data={
-     'id': 1
+     'id': 5
     }
     headers={'content-Type':'application/json'}
 # convert python data into json
@@ -82,5 +82,5 @@ def delete_data():
 
 # get_data(2)
 # post_data()
-update_data()
-# delete_data()
+# update_data()
+delete_data()

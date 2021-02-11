@@ -35,5 +35,14 @@ def studentapi(request):
         return Response(serialzer.errors)
 
 
+    if request.method=="DELETE":
+        id=request.data.get('id')
+        stu=Student.objects.get(pk=id)
+        stu.delete()
+        return Response({'msg':"Data Deleted Successfully"})
+
+
+
+
 
 
