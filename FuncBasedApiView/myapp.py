@@ -83,7 +83,7 @@ def delete_data():
     print(data)
 
 
-get_data()
+# get_data()
 post_data()
 # update_data()
 # delete_data()

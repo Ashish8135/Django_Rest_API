@@ -13,4 +13,4 @@ def hello(request):
         return Response({'msg':'THis is Get Request'})
     if request.method=='POST':
         print(request.data)
-        return Response({'msg':'This is post request'})
+        return Response({'msg':'This is post request','data':request.data})
