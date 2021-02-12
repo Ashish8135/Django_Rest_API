@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+# from django import views
+from crudapibrowsable import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('browsableapi/',views.StudentApi),
+    path('browsableapi/<int:pk>',views.StudentApi),
+
 ]
+
