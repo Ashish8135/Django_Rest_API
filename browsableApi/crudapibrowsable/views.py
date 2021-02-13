@@ -8,13 +8,13 @@ from  rest_framework.decorators import api_view
 @api_view(['GET','POST','PUT','PATCH','DELETE'])
 def StudentApi(request,pk=None):
     if request.method=='GET':
-        id=pk
+        id=pk 
         if id is not None:
             stu=Student.objects.get(id=id)
-            serializer=StudentSerializer(stu,many=True)
+            serializer=StudentSerializer(stu)
             return Response(serializer.data)
         stu=Student.objects.all()
-        serializer=StudentSerializer(stu)
+        serializer=StudentSerializer(stu,many=True)
         return Response(serializer.data)
 
     if request.method=="POST":
