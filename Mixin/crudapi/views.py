@@ -11,13 +11,11 @@ class StudentList(GenericAPIView,ListModelMixin):
     def get(self,request,*args,**kwargs):
         return self.list(request,*args,**kwargs)
 
-
 class StudentCreate(GenericAPIView,CreateModelMixin):
     queryset=Student.objects.all()
     serializer_class=StudentSerializer   
     def post(self,request,*args,**kwargs):
         return self.create(request,*args,**kwargs)
-
 
 class StudentRetrieve(GenericAPIView,RetrieveModelMixin):
     queryset=Student.objects.all()
@@ -36,3 +34,32 @@ class StudentDestroy(GenericAPIView,DestroyModelMixin):
     serializer_class=StudentSerializer   
     def delete(self,request,*args,**kwargs):
         return self.destroy(request,*args,**kwargs)
+
+
+
+# Above method is complex we have to create urls forl each class
+# so same is done with the another way
+
+class ListCreate(GenericAPIView,ListModelMixin,CreateModelMixin):
+    queryset=Student.objects.all()
+    serializer_class=StudentSerializer   
+    def get(self,request,*args,**kwargs):
+        return self.list(request,*args,**kwargs)
+    def post(self,request,*args,**kwargs):
+        return self.create(request,*args,**kwargs)
+
+
+class RetrieveUpdateDestroy(GenericAPIView,RetrieveModelMixin,UpdateModelMixin,DestroyModelMixin):
+    queryset=Student.objects.all()
+    serializer_class=StudentSerializer 
+    def get(self,request,*args,**kwargs):
+        return self.retrieve(request,*args,**kwargs)
+
+    def put(self,request,*args,**kwargs):
+        return self.update(request,*args,**kwargs) 
+
+    def delete(self,request,*args,**kwargs):
+        return self.destroy(request,*args,**kwargs)
+
+     
+
