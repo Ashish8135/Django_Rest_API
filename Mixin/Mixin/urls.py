@@ -18,6 +18,6 @@ from django.urls import path
 from crudapi import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('stuapi/',views.StudentApi.as_view()),
-    path('stuapi/<int:pk>/',views.StudentApi.as_view()),
+    path('stuapi/',views.StudentList.as_view()),
+    # path('stuapi/<int:pk>/',views.StudentList.as_view()),
 ]
