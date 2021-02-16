@@ -21,7 +21,8 @@ from crudapi import views
 # create router object
 
 router=DefaultRouter()
-router.register('studentapi',views.StudentModelViewSet,basename='student')
+# router.register('studentapi',views.StudentModelViewSet,basename='student')
+router.register('studentapi',views.StudentReadOnlyModelViewSet,basename='student')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include(router.urls)),
