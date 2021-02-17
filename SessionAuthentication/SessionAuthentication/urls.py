@@ -1,5 +1,4 @@
-"""SessionAuthentication URL Configuration
-
+"""ModelViewSet URL Configuration
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
 Examples:
@@ -14,8 +13,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
+from rest_framework.routers import DefaultRouter
+from SessionType import views
 
+# create router object
+
+router=DefaultRouter()
+router.register('studentapi ',views.StudentSessionAuthentication,basename='student')
+# router.register('studentapi',views.StudentReadOnlyModelViewSet,basename='student')
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',include(router.urls)),
+    path('auth/',include('rest_framework.urls',namespace='rest_framework')),
 ]
