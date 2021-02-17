@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework import viewsets
 from .serializer import StudentSerializer
 from rest_framework.authentication import BasicAuthentication
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated,AllowAny,IsAdminUser
 # Create your views here.
 
 class StudentAuthentication(viewsets.ModelViewSet):
@@ -12,3 +12,7 @@ class StudentAuthentication(viewsets.ModelViewSet):
     serializer_class=StudentSerializer
     authentication_classes=[BasicAuthentication]
     permission_classes=[IsAuthenticated]
+    permission_classes=[AllowAny]
+    permission_classes=[IsAdminUser]
+
+
