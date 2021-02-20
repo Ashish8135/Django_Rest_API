@@ -16,4 +16,4 @@ class StudentSessionAuthentication(viewsets.ModelViewSet):
     # permission_classes=[IsAdminUser]
     # permission_classes=[IsAuthenticatedOrReadOnly]
     # permission_classes=[DjangoModelPermissions]
-    permission_classes=[DjangoModelPermissionsOrAnonReadOnly] 
+    # permission_classes=[DjangoModelPermissionsOrAnonReadOnly]
