@@ -16,6 +16,7 @@ from django.contrib import admin
 from django.urls import path,include
 from rest_framework.routers import DefaultRouter
 from TokenAuth import views
+from rest_framework.authtoken.views import obtain_auth_token
 
 # create router object
 
@@ -26,4 +27,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include(router.urls)),
     path('auth/',include('rest_framework.urls',namespace='rest_framework')),
+    # 1st way  is from admin panel
+    # 2nd way is from drf_create_token function
+    # 3rd way to create or get token
+    path('gottoken/',obtain_auth_token),
 ]
