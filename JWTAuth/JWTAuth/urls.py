@@ -24,7 +24,7 @@ router=DefaultRouter()
 router.register('studentapi',views.StudentModelViewSet,basename='student')
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('gettoken',TokenObtainPairView.as_view(),name='token_obtain_pair'),
-    path('refreshtoken',TokenRefreshView.as_view(),name='refresh_obtain_pair'),
-    path('verifytoken',TokenVerifyView.as_view(),name='verify_obtain_pair')
+    path('gettoken/',TokenObtainPairView.as_view(),name='token_obtain_pair'),
+    path('refreshtoken/',TokenRefreshView.as_view(),name='refresh_obtain_pair'),
+    path('verifytoken/',TokenVerifyView.as_view(),name='verify_obtain_pair')
 ]
