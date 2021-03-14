@@ -120,3 +120,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+REST_FRAMEWORK={
+    'DEFAULT_THROTTLE_RATES':{
+        'viewstu':'5/hour',
+        'createstu': '5/hour',
+        'updatestu':'2/day',
+        'retrievestu':'4/minute',
+        'deletestu':'2/hour'
+    }
+}
