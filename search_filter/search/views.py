@@ -9,3 +9,4 @@ class StudentList(ListAPIView):
     serializer_class = StudentSerializer
     filter_backends=[SearchFilter]
     search_fields=['name']
+    search_fields=['^name']
