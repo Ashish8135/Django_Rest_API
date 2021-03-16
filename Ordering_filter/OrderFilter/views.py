@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from search.serializer import StudentSerializer
+from OrderFilter import StudentSerializer
 from .models import Student
 from rest_framework.generics import ListAPIView
 from rest_framework.filters import SearchFilter
@@ -9,4 +9,4 @@ class StudentList(ListAPIView):
     serializer_class = StudentSerializer
     filter_backends=[SearchFilter]
     search_fields=['name']
-    # search_fields=['^name']
+    search_fields=['^name']
