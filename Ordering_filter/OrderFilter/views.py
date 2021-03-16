@@ -1,12 +1,12 @@
 from django.shortcuts import render
-from OrderFilter import StudentSerializer
+from OrderFilter.serializer import StudentSerializer
 from .models import Student
 from rest_framework.generics import ListAPIView
-from rest_framework.filters import SearchFilter
+from rest_framework.filters import OrderingFilter
 # Create your views here.
 class StudentList(ListAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
-    filter_backends=[SearchFilter]
+    filter_backends=[OrderingFilter]
     search_fields=['name']
     search_fields=['^name']
