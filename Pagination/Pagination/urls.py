@@ -19,5 +19,5 @@ from  PageNumberPagination import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('studentfilter/',views.StudentList.as_view()),
+    path('studentPagination/',views.StudentList.as_view()),
 ]
